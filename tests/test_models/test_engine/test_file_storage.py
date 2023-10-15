@@ -3,6 +3,7 @@
 
 import unittest
 import datetime
+import os
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
@@ -37,3 +38,23 @@ class TestStorageClass(unittest.TestCase):
         self.assertEqual(objects[f"BaseModel.{self.model_1.id}"], self.model_1)
         self.assertEqual(objects[f"BaseModel.{self.model_2.id}"], self.model_2)
         self.assertEqual(objects[f"BaseModel.{self.model_3.id}"], self.model_3)
+
+    def test_2(self):
+        """Check if all method returning a dictionary."""
+        objects = self.storage.all()
+        self.assertTrue(type(objects) is dict)
+
+    def test_3(self):
+        """Check if the file exists after using the save method."""
+        objects = self.storage.save()
+        self.assertTrue(os.path.isfile("file.json"))
+
+    def test_4(self):
+        """Check if the models saved have same ids."""
+        new_object = BaseModel()
+        self.storage.new(new_object)
+        self.storage.save()
+        self.storage.reload()
+        objects = self.storage.all()
+        self.assertTrue(f"BaseModel.{new_object.id}" in self.storage.all())
+        self.assertEqual(objects[f"BaseModel.{new_object.id}"].id, new_object.id)
