@@ -35,8 +35,8 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, s):
         """Take care of unrecognized commands."""
-        line = shlex.split(s)
-        match = re.search(r"([A-Z]\w*)\.(\w+)\(\w*\)", line[0])
+        # line = shlex.split(s)
+        match = re.search(r"([A-Z]\w*)\.(\w+)\(([^()]*)\)", s)
         if match:
             class_name = match.group(1)
             objects = models.storage.all()
@@ -44,12 +44,16 @@ class HBNBCommand(cmd.Cmd):
                 command = match.group(2)
                 if command == "all":
                     self.do_all(class_name)
-                if command == "count":
+                elif command == "count":
                     result = 0
                     for key, model in objects.items():
                         if key.startswith(class_name):
                             result += 1
                     print(result)
+                elif command == "show":
+                    args = match.group(3)
+                    text = f"{class_name} {' '.join(args.split(','))}"
+                    self.do_show(text)
             else:
                 print("** class doesn't exist **")
         else:
