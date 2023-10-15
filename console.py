@@ -50,10 +50,10 @@ class HBNBCommand(cmd.Cmd):
                         if key.startswith(class_name):
                             result += 1
                     print(result)
-                elif command == "show":
-                    args = match.group(3)
-                    text = f"{class_name} {' '.join(args.split(','))}"
-                    self.do_show(text)
+                elif command in ["show", "destroy", "update"]:
+                    args = " ".join(match.group(3).split(","))
+                    text = f"{class_name} {args}"
+                    eval(f"self.do_{command}('{text}')")
             else:
                 print("** class doesn't exist **")
         else:
