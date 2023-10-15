@@ -5,6 +5,7 @@ import cmd
 import shlex
 import models
 import re
+import json
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -53,7 +54,20 @@ class HBNBCommand(cmd.Cmd):
                 elif command in ["show", "destroy", "update"]:
                     args = " ".join(match.group(3).split(","))
                     text = f"{class_name} {args}"
-                    eval(f"self.do_{command}('{text}')")
+                    if args[-1] == "}":
+                        # "38f22813-2753-4d42-b37c-57a17f1e4f88", {
+                        #                          'first_name': "John",
+                        #                          "age": 89
+                        #                       }
+                        match2 = re.search(
+                                r'("[^"]*"), ({[^{}]*})', match.group(3)
+                            )
+                        id = match2.group(1)
+                        attrs = match2.group(2)
+                        for key, value in eval(attrs).items():
+                            self.do_update(f"{class_name} {id} {key} {value}")
+                    else:
+                        eval(f"self.do_{command}('{text}')")
             else:
                 print("** class doesn't exist **")
         else:

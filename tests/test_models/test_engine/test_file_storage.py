@@ -4,6 +4,7 @@
 import unittest
 import datetime
 import os
+import models
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
@@ -57,4 +58,18 @@ class TestStorageClass(unittest.TestCase):
         self.storage.reload()
         objects = self.storage.all()
         self.assertTrue(f"BaseModel.{new_object.id}" in self.storage.all())
-        self.assertEqual(objects[f"BaseModel.{new_object.id}"].id, new_object.id)
+        self.assertEqual(
+            objects[f"BaseModel.{new_object.id}"].id, new_object.id
+        )
+
+    def test_5(self):
+        """Test type storege."""
+        self.assertEqual(type(models.storage), FileStorage)
+
+    def test_6(self):
+        """Test new None storage."""
+        with self.assertRaises(AttributeError):
+            models.storage.new(None)
+
+        with self.assertRaises(TypeError):
+            models.storage.new()
