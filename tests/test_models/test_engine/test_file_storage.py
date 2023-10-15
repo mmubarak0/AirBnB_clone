@@ -9,7 +9,7 @@ from models.base_model import BaseModel
 
 class TestStorageClass(unittest.TestCase):
     """Test storage class."""
-    
+
     @classmethod
     def setUpClass(self):
         """Set test class."""
@@ -31,8 +31,9 @@ class TestStorageClass(unittest.TestCase):
         self.storage.new(a)
         self.assertTrue(f"BaseModel.{a.id}" in objects)
 
-
     def test_1(self):
         """Check the equality of the created model and the model."""
         objects = self.storage.all()
         self.assertEqual(objects[f"BaseModel.{self.model_1.id}"], self.model_1)
+        self.assertEqual(objects[f"BaseModel.{self.model_2.id}"], self.model_2)
+        self.assertEqual(objects[f"BaseModel.{self.model_3.id}"], self.model_3)
