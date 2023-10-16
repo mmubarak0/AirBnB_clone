@@ -13,4 +13,4 @@ class TestStateClass(unittest.TestCase):
     def test_0(self):
         """Test name attribute."""
         a = State()
-        self.assertNotEqual(a.name, None)
+        self.assertEqual(type(a.name), str)
