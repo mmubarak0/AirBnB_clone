@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for the base model."""
+"""Tests for the state model."""
 
 import unittest
 import datetime
@@ -8,9 +8,9 @@ from models.state import State
 
 
 class TestStateClass(unittest.TestCase):
-    """Test base class."""
+    """Test state class."""
 
     def test_0(self):
-        """Test amenity."""
+        """Test name attribute."""
         a = State()
-        self.assertEqual(len(a.id), 36)
+        self.assertNotEqual(a.name, None)
