@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for the base model."""
+"""Tests for the review model."""
 
 import unittest
 import datetime
@@ -8,9 +8,19 @@ from models.review import Review
 
 
 class TestReviewClass(unittest.TestCase):
-    """Test base class."""
+    """Test review class."""
 
     def test_0(self):
-        """Test amenity."""
+        """Test place_id attribute."""
         a = Review()
-        self.assertEqual(len(a.id), 36)
+        self.assertEqual(type(a.place_id), str)
+
+    def test_0(self):
+        """Test user_id attribute."""
+        a = Review()
+        self.assertEqual(type(a.user_id), str)
+
+    def test_0(self):
+        """Test text attribute."""
+        a = Review()
+        self.assertEqual(type(a.text), str)

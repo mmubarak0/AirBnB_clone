@@ -63,4 +63,4 @@ class TestPlaceClass(unittest.TestCase):
     def test_10(self):
         """Test amenities attribute."""
         a = Place()
-        self.assertEqual(type(a.amenities), list)
+        self.assertEqual(type(a.amenity_ids), list)

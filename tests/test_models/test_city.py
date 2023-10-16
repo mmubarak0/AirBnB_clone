@@ -18,4 +18,4 @@ class TestCityClass(unittest.TestCase):
     def test_1(self):
         """Test state_id attribute."""
         a = City()
-        self.assertEqual(type(a.state_id), None)
+        self.assertEqual(type(a.state_id), str)
