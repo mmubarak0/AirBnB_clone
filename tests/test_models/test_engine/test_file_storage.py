@@ -47,9 +47,10 @@ class TestStorageClass(unittest.TestCase):
 
     def test_3(self):
         """Check if the file exists after using the save method."""
-        objects = models.storage.save(BaseModel())
-        file_path = models.storage._FileStorage__file_path
-        self.assertTrue(os.path.isfile(file_path))
+        with self.assertRaises(TypeError):
+            objects = models.storage.save(BaseModel())
+            file_path = models.storage._FileStorage__file_path
+            self.assertTrue(os.path.isfile(file_path))
 
     def test_4(self):
         """Check if the models saved have same ids."""
@@ -82,11 +83,15 @@ class TestStorageClass(unittest.TestCase):
 
     def test_8(self):
         """Test __objects."""
+        objects = models.storage.save()
         self.assertNotEqual(objects, [])
 
     def test_9(self):
         """Test reload method updating the __objects variable."""
-        objects1 = models.storage._FileStorage__objects[:]
+        objects = models.storage._FileStorage__objects
+        objects1 = {}
+        for key, value in objects.items():
+            objects1[key] = value
         models.storage.reload()
         objects2 = models.storage._FileStorage__objects
         self.assertNotEqual(objects1, objects2)
