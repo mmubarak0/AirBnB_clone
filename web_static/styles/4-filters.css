@@ -1,0 +1,19 @@
+button {
+	position: absolute;
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	width: 20%;
+	right: 30px;
+	top: 50%;
+	height: 48px;
+	margin-top: -24px;
+}
+
+.filters {
+		position: relative;
+		background-color: white;
+		height: 70px;
+		width: 100%;
+		border: solid #DDDDDD 1px;
+		border-radius: 4px;
+}
