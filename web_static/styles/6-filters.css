@@ -22,7 +22,7 @@ button {
 		border-right: solid #DDDDDD 1px;
 }
 
-.locations, .amenities {
+.filters .locations, .filters .amenities {
 		display: inline-flex;
 		height: 100%;
 		width: 25%;
@@ -31,14 +31,14 @@ button {
 		align-items: flex-start;
 }
 
-.locations h3, .amenities h3 {
+.filters .locations h3, .filters .amenities h3 {
 	font-weight: 600;
 	padding: 0 40px;
 	line-height: 80%;
 	margin: 10px 0 5px 0;
 }
 
-.locations h4, .amenities h4 {
+.filters .locations h4, .filters .amenities h4 {
 	font-weight: 400;
 	font-size: 14px;
 	padding: 0 40px;
@@ -72,10 +72,10 @@ button {
 	padding: 2px 10px;
 }
 
-.locations:hover .popover {
+.filters .locations:hover .popover {
 	display: block;
 }
 
-.amenities:hover .popover {
+.filters .amenities:hover .popover {
 	display: block;
 }
