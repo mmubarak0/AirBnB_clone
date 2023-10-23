@@ -1,0 +1,29 @@
+.places {
+		padding: 100px 0;
+		background: linear-gradient(to top, white 90%, #FF5A5F);
+}
+
+.places h1 {
+	text-align: left;
+	font-size: 30px;
+}
+
+.places-box {
+		display: flex;
+		flex-direction: row;
+    	flex-wrap: wrap;
+    	justify-content: space-evenly;
+}
+
+.place-card {
+		width: 390px;
+		padding: 20px;
+		margin: 20px;
+		border: solid #FF5A5F 1px;
+		border-radius: 4px;
+}
+
+.place-name {
+		text-align: center;
+		font-size: 30px;
+}
