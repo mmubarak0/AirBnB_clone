@@ -1,0 +1,42 @@
+button {
+	position: absolute;
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	width: 20%;
+	right: 30px;
+	top: 50%;
+	height: 48px;
+	margin-top: -24px;
+}
+
+.filters {
+		position: relative;
+		background-color: white;
+		height: 70px;
+		width: 100%;
+		border: solid #DDDDDD 1px;
+		border-radius: 4px;
+}
+
+.sep {
+		border-right: solid #DDDDDD 1px;
+}
+
+.locations, .amenities {
+		display: inline-block;
+		height: 100%;
+		width: 25%;
+}
+
+.locations h3, .amenities h3 {
+	font-weight: 600;
+	padding: 0 40px;
+	line-height: 80%;
+}
+
+.locations h4, .amenities h4 {
+	font-weight: 400;
+	font-size: 14px;
+	padding: 0 40px;
+	line-height: 0;
+}
