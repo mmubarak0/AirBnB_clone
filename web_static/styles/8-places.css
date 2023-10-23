@@ -1,4 +1,6 @@
 .places {
+		position: relative;
+		z-index: -1;
 		padding: 0 0 100px;
 		background: linear-gradient(to bottom, white 90%, #FF5A5F);
 }
